@@ -82,35 +82,32 @@ router.route("/add").post(isLoggedIn,function(req, res, next) {
     });
 });
 
-/*fetch news from database according to category and keyword*/
-/*object from body will be passed that contain category and keyword both eare optional*/
+/*fetch news from database according to category and key*/
+/*object from body will be passed that contain category and key both eare optional*/
 router.route("/get").post(isLoggedIn,function(req,res,next){
   var obj = {username:req.user.username};
-  var keyword = "";
+  var key = req.body.key;
   if(req.body.category){
   obj.category = req.body.category;
   }
-  if(req.body.keyword){
-    keyword = req.body.keyword;
-  }
-  News.find(obj,function(err,data){
-    if(keyword){
-      if(data){
+  News.find(obj,{_id:0},function(err,data){
+  if(data){
+    if(key){
         data = data.map(function(d){
           if(d.description){
-            if(d.description.search(new RegExp(keyword,'i'))>-1)
+            if(d.description.search(new RegExp(key,'i'))>-1)
             return d;
           }
-          else if(d.title){
-            if(d.title.search(new RegExp(keyword,'i'))>-1)
+          if(d.title){
+            if(d.title.search(new RegExp(key,'i'))>-1)
             return d;
           }
-          else if(d.author){
-            if(d.author.search(new RegExp(keyword,'i'))>-1)
+          if(d.author){
+            if(d.author.search(new RegExp(key,'i'))>-1)
             return d;
           }
-          else if(d.comment){
-            if(d.comment.search(new RegExp(keyword,'i'))>-1)
+          if(d.comment){
+            if(d.comment.search(new RegExp(key,'i'))>-1)
             return d;
           }
         });
@@ -118,6 +115,7 @@ router.route("/get").post(isLoggedIn,function(req,res,next){
     }
     res.json(data);
   });
+
 });
 
 /*update news comment and category */
