@@ -26452,15 +26452,15 @@ var ListFav = React.createClass({displayName: "ListFav",
     this.setState({Newsdata:temp})
   },
   updateReRender:function(d){
-  var temp = this.state.Newsdata;
-  for(var i=0;i<temp.length;i++){
-    if(temp[i].url==d.url){
-      temp[i].comment=d.comment;
-      this.setState({Newsdata:temp});
-      break;
+    var temp = this.state.Newsdata;
+    for(var i=0;i<temp.length;i++){
+      if(temp[i].url==d.url){
+        temp[i].comment=d.comment;
+        this.setState({Newsdata:temp});
+        break;
+      }
     }
-  }
-},
+  },
   render:function(){
     var News;
     if(this.state.Newsdata.length==0)
@@ -26496,11 +26496,12 @@ checkUser:function(){
     dataType:"JSON",
     success: function(data)
     {
-   console.log("Ajax login success");
-     browserHistory.push('/');
+      console.log("Ajax login success");
+      browserHistory.push('/');
     }.bind(this),
     error: function(err)
     {
+      alert("User Unauthorised");
       console.log(err);
     }.bind(this)
   });
@@ -26822,7 +26823,7 @@ var Signup = React.createClass({displayName: "Signup",
                     data: signupForm,
                     success: function(data)
                     {
-                        console.log(data);
+                        alert(data);
                         browserHistory.push('/');
                     }.bind(this),
                     error: function(err)

@@ -10,11 +10,12 @@ checkUser:function(){
     dataType:"JSON",
     success: function(data)
     {
-   console.log("Ajax login success");
-     browserHistory.push('/');
+      console.log("Ajax login success");
+      browserHistory.push('/');
     }.bind(this),
     error: function(err)
     {
+      alert("User Unauthorised");
       console.log(err);
     }.bind(this)
   });

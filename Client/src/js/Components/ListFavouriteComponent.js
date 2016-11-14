@@ -41,15 +41,15 @@ var ListFav = React.createClass({
     this.setState({Newsdata:temp})
   },
   updateReRender:function(d){
-  var temp = this.state.Newsdata;
-  for(var i=0;i<temp.length;i++){
-    if(temp[i].url==d.url){
-      temp[i].comment=d.comment;
-      this.setState({Newsdata:temp});
-      break;
+    var temp = this.state.Newsdata;
+    for(var i=0;i<temp.length;i++){
+      if(temp[i].url==d.url){
+        temp[i].comment=d.comment;
+        this.setState({Newsdata:temp});
+        break;
+      }
     }
-  }
-},
+  },
   render:function(){
     var News;
     if(this.state.Newsdata.length==0)

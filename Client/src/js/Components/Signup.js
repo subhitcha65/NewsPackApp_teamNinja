@@ -26,7 +26,7 @@ var Signup = React.createClass({
                     data: signupForm,
                     success: function(data)
                     {
-                        console.log(data);
+                        alert(data);
                         browserHistory.push('/');
                     }.bind(this),
                     error: function(err)
