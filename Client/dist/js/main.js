@@ -26155,56 +26155,56 @@ module.exports = DisplayNews;
 var React = require('react');
 var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
   updateNews: function(){
-  var comment = this.refs.comment.value;
-  var toBeUpdateObj =  {'url':this.props.newsObj.url,'comment':comment};
-   var updateRender = this.props.updateRender.bind(null,this.props.newsObj);
-   $.ajax({
-     url:'http://localhost:8080/news/update',
-     type: 'PUT',
-     data: toBeUpdateObj,
-     success: function(data)
-     {
-       updateRender();
-     }.bind(this),
-     error: function(err)
-     {
-       console.log(err);
-     }.bind(this)
-   });
- },
+    var comment = this.refs.comment.value;
+    var toBeUpdateObj =  {'url':this.props.newsObj.url,'comment':comment};
+    var updateRender = this.props.updateRender.bind(null,toBeUpdateObj);
+    $.ajax({
+      url:'http://localhost:8080/news/update',
+      type: 'PUT',
+      data: toBeUpdateObj,
+      success: function(data)
+      {
+        updateRender();
+      }.bind(this),
+      error: function(err)
+      {
+        console.log(err);
+      }.bind(this)
+    });
+  },
   deleteFavNews:function()
   {
-   //alert(title);
-   var toBeDeleteObj = this.props.newsObj;
-   url = this.props.newsObj.url;
-   var deleteFromURL = this.props.del.bind(null,url);
-  $.ajax({
-    url:'http://localhost:8080/news/delete/',
-    type: 'DELETE',
-    data : toBeDeleteObj,
-    success: function(data)
-    {
-      deleteFromURL();
-    }.bind(this),
-    error: function(err)
-    {
-      console.log(err);
-    }.bind(this)
-  });
+    //alert(title);
+    var toBeDeleteObj = this.props.newsObj;
+    url = this.props.newsObj.url;
+    var deleteFromURL = this.props.del.bind(null,url);
+    $.ajax({
+      url:'http://localhost:8080/news/delete/',
+      type: 'DELETE',
+      data : toBeDeleteObj,
+      success: function(data)
+      {
+        deleteFromURL();
+      }.bind(this),
+      error: function(err)
+      {
+        console.log(err);
+      }.bind(this)
+    });
   },
   render: function(){
     var title=this.props.newsObj.publishedAt;
-   console.log(title);
-   var titleID='';
-   for(var i=0;i<title.length;++i){
-     if(title.charAt(i)==='-'||title.charAt(i)===':'){
-       continue;
-     }
-     else{
-       titleID+=title.charAt(i);
-     }
-   }
-   console.log(titleID);
+    console.log(title);
+    var titleID='';
+    for(var i=0;i<title.length;++i){
+      if(title.charAt(i)==='-'||title.charAt(i)===':'){
+        continue;
+      }
+      else{
+        titleID+=title.charAt(i);
+      }
+    }
+    console.log(titleID);
     return (
       React.createElement("div", {className: "container", id: "movieElement"}, 
       React.createElement("div", {style: {backgroundColor:'#CCCCCC'}, className: "row"}, 
@@ -26221,38 +26221,38 @@ var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
       React.createElement("h3", null, this.props.newsObj.title)
       ), 
       React.createElement("div", {className: "form-group form-group-sm"}, 
-    React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Desciprion:"), 
-    React.createElement("div", {className: "col-sm-10"}, 
-    React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.description, disabled: true}), React.createElement("p", null)
-    )
-    ), 
-    React.createElement("div", {className: "form-group form-group-sm"}, 
-  React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Published:"), 
-  React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Desciprion:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.description, disabled: true}), React.createElement("p", null)
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Published:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
       React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.publishedAt, disabled: true}), React.createElement("p", null)
-  )
-  ), 
-  React.createElement("div", {className: "form-group form-group-sm"}, 
-React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Category:"), 
-React.createElement("div", {className: "col-sm-10"}, 
-React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.category, disabled: true}), React.createElement("p", null)
-)
-), 
-React.createElement("div", {className: "form-group form-group-sm"}, 
-React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Comments:"), 
-React.createElement("div", {className: "col-sm-10"}, 
-React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.comment, disabled: true}), React.createElement("p", null)
-)
-), 
-  React.createElement("div", {className: "form-group form-group-sm"}, 
-React.createElement("label", {className: "col-sm-1 control-label", htmlFor: "formGroupInputLarge"}), 
-React.createElement("div", {className: "col-sm-11"}, 
-React.createElement("a", {id: "modal-195236", href: '#'+titleID, role: "button", className: "btn", "data-toggle": "modal"}, 
-React.createElement("button", {className: "btn btn-primary btn-sm"}, "UPDATE ", React.createElement("span", {className: "glyphicon glyphicon-check"}))), "  ", 
-React.createElement("button", {onClick: this.deleteFavNews, className: "btn btn-primary btn-sm"}, "DELETE ", React.createElement("span", {className: "glyphicon glyphicon-trash"})), "  ", 
-   React.createElement("a", {href: this.props.newsObj.url, target: "_blank"}, React.createElement("button", {className: "btn btn-success btn-sm"}, "Check full News", React.createElement("span", {className: "glyphicon glyphicon-eye-open"})))
-)
-)
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Category:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.category, disabled: true}), React.createElement("p", null)
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Comments:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.comment, disabled: true}), React.createElement("p", null)
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-1 control-label", htmlFor: "formGroupInputLarge"}), 
+      React.createElement("div", {className: "col-sm-11"}, 
+      React.createElement("a", {id: "modal-195236", href: '#'+titleID, role: "button", className: "btn", "data-toggle": "modal"}, 
+      React.createElement("button", {className: "btn btn-primary btn-sm"}, "UPDATE ", React.createElement("span", {className: "glyphicon glyphicon-check"}))), "  ", 
+      React.createElement("button", {onClick: this.deleteFavNews, className: "btn btn-primary btn-sm"}, "DELETE ", React.createElement("span", {className: "glyphicon glyphicon-trash"})), "  ", 
+      React.createElement("a", {href: this.props.newsObj.url, target: "_blank"}, React.createElement("button", {className: "btn btn-success btn-sm"}, "Check full News", React.createElement("span", {className: "glyphicon glyphicon-eye-open"})))
+      )
+      )
       )
       ), 
       React.createElement("div", {className: "row"}, 
@@ -26262,41 +26262,41 @@ React.createElement("button", {onClick: this.deleteFavNews, className: "btn btn-
       ), 
 
       React.createElement("div", {className: "modal fade", id: titleID, role: "dialog", "aria-labelledby": "myModalLabel", "aria-hidden": "true"}, 
-        React.createElement("div", {className: "modal-dialog"}, 
-          React.createElement("div", {className: "modal-content"}, 
-            React.createElement("div", {className: "modal-header"}, 
+      React.createElement("div", {className: "modal-dialog"}, 
+      React.createElement("div", {className: "modal-content"}, 
+      React.createElement("div", {className: "modal-header"}, 
 
-              React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-hidden": "true"}, 
-                "×"
-              ), 
-              React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, 
-                "Modal title"
-              )
-            ), 
-            React.createElement("div", {className: "modal-body"}, 
-              React.createElement("p", null, 
-                React.createElement("small", {className: "text-muted"}, "Mention your Category------")
-              ), 
-              React.createElement("hr", null), 
-              React.createElement("form", {className: "form-horizontal", action: "index.html", method: "post"}, 
-                React.createElement("div", {className: "form-group"}, 
-                  React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputEmail"}, "Comments"), 
-                  React.createElement("div", {className: "col-lg-10"}, 
-                    React.createElement("input", {type: "text", ref: "comment", className: "form-control", placeholder: this.props.newsObj.comment})
-                  )
-                )
-              )
-            ), 
-            React.createElement("div", {className: "modal-footer"}, 
-              React.createElement("button", {type: "button", className: "btn btn-default", "data-dismiss": "modal"}, 
-                "Close"
-              ), 
-              React.createElement("button", {onClick: this.updateNews, type: "button", "data-dismiss": "modal", className: "btn btn-success"}, 
-                "Save changes"
-              )
-            )
-          )
-        )
+      React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-hidden": "true"}, 
+      "×"
+      ), 
+      React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, 
+      "Modal title"
+      )
+      ), 
+      React.createElement("div", {className: "modal-body"}, 
+      React.createElement("p", null, 
+      React.createElement("small", {className: "text-muted"}, "Mention your Category------")
+      ), 
+      React.createElement("hr", null), 
+      React.createElement("form", {className: "form-horizontal", action: "index.html", method: "post"}, 
+      React.createElement("div", {className: "form-group"}, 
+      React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputEmail"}, "Comments"), 
+      React.createElement("div", {className: "col-lg-10"}, 
+      React.createElement("input", {type: "text", ref: "comment", className: "form-control", placeholder: this.props.newsObj.comment})
+      )
+      )
+      )
+      ), 
+      React.createElement("div", {className: "modal-footer"}, 
+      React.createElement("button", {type: "button", className: "btn btn-default", "data-dismiss": "modal"}, 
+      "Close"
+      ), 
+      React.createElement("button", {onClick: this.updateNews, type: "button", "data-dismiss": "modal", className: "btn btn-success"}, 
+      "Save changes"
+      )
+      )
+      )
+      )
       )
       )
     );
@@ -26460,7 +26460,6 @@ var ListFav = React.createClass({displayName: "ListFav",
       break;
     }
   }
-
 },
   render:function(){
     var News;
@@ -26762,7 +26761,7 @@ var SearchComponent=React.createClass({displayName: "SearchComponent",
     {
       category = "";
     }
-    var obj={"category":category,"keyword":this.state.key};
+    var obj={"category":category,"key":this.state.key};
     this.props.getNews(obj);
     console.log(obj);
   },

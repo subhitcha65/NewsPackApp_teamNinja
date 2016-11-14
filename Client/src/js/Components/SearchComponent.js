@@ -28,7 +28,7 @@ var SearchComponent=React.createClass({
     {
       category = "";
     }
-    var obj={"category":category,"keyword":this.state.key};
+    var obj={"category":category,"key":this.state.key};
     this.props.getNews(obj);
     console.log(obj);
   },

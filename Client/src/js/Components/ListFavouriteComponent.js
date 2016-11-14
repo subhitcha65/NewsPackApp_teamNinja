@@ -49,7 +49,6 @@ var ListFav = React.createClass({
       break;
     }
   }
-
 },
   render:function(){
     var News;
