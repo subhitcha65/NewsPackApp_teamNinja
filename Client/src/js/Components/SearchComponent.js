@@ -14,7 +14,6 @@ var SearchComponent=React.createClass({
       type:'GET',
       dataType:'JSON',
       success:function(data){
-        console.log(data);
         this.setState({SelectOptions:data.category});
       }.bind(this),
       error:function(err){
@@ -44,7 +43,6 @@ var SearchComponent=React.createClass({
   },
   render:function(){
     var SelectListArr=this.state.SelectOptions.map(function(option){
-      console.log('entering');
       return(<option value={option}>{option}</option>);
     });
     return (

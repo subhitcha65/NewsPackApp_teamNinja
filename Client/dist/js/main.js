@@ -26157,19 +26157,14 @@ var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
   updateNews: function(){
   var comment = this.refs.comment.value;
   var toBeUpdateObj =  {'url':this.props.newsObj.url,'comment':comment};
-  alert(comment);
-   url = this.props.newsObj.url;
-   var updateRender = this.props.updateRender.bind(null,url);
+   var updateRender = this.props.updateRender.bind(null,this.props.newsObj);
    $.ajax({
      url:'http://localhost:8080/news/update',
      type: 'PUT',
      data: toBeUpdateObj,
-
      success: function(data)
      {
-       alert("in success");
        updateRender();
-       alert(data);
      }.bind(this),
      error: function(err)
      {
@@ -26182,16 +26177,13 @@ var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
    //alert(title);
    var toBeDeleteObj = this.props.newsObj;
    url = this.props.newsObj.url;
-   alert(url);
    var deleteFromURL = this.props.del.bind(null,url);
   $.ajax({
     url:'http://localhost:8080/news/delete/',
     type: 'DELETE',
     data : toBeDeleteObj,
-
     success: function(data)
     {
-      alert(url);
       deleteFromURL();
     }.bind(this),
     error: function(err)
@@ -26446,7 +26438,6 @@ var ListFav = React.createClass({displayName: "ListFav",
     this.getNews(null);
   },
   deletemovie:function(url){
-    alert(url);
     var temp = this.state.Newsdata;
     j=-1;
     for(var i=0;i<temp.length;i++){
@@ -26462,14 +26453,14 @@ var ListFav = React.createClass({displayName: "ListFav",
   },
   updateReRender:function(d){
   var temp = this.state.Newsdata;
-  alert(d);
   for(var i=0;i<temp.length;i++){
     if(temp[i].url==d.url){
       temp[i].comment=d.comment;
+      this.setState({Newsdata:temp});
       break;
     }
   }
-  this.setState({Newsdata:temp})
+
 },
   render:function(){
     var News;
@@ -26481,8 +26472,7 @@ var ListFav = React.createClass({displayName: "ListFav",
       var tempData  = this.deletemovie;
       var tempUpdate = this.updateReRender;
       News = this.state.Newsdata.map(function(news) {
-        return (React.createElement(FavouriteDisplay, {newsObj: news, updateRender: tempUpdate, del: tempData})
-        );
+        return (React.createElement(FavouriteDisplay, {newsObj: news, updateRender: tempUpdate, del: tempData}));
       });
     }
     return(
@@ -26758,7 +26748,6 @@ var SearchComponent=React.createClass({displayName: "SearchComponent",
       type:'GET',
       dataType:'JSON',
       success:function(data){
-        console.log(data);
         this.setState({SelectOptions:data.category});
       }.bind(this),
       error:function(err){
@@ -26788,7 +26777,6 @@ var SearchComponent=React.createClass({displayName: "SearchComponent",
   },
   render:function(){
     var SelectListArr=this.state.SelectOptions.map(function(option){
-      console.log('entering');
       return(React.createElement("option", {value: option}, option));
     });
     return (

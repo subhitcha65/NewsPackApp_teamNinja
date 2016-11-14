@@ -27,7 +27,6 @@ var ListFav = React.createClass({
     this.getNews(null);
   },
   deletemovie:function(url){
-    alert(url);
     var temp = this.state.Newsdata;
     j=-1;
     for(var i=0;i<temp.length;i++){
@@ -43,14 +42,14 @@ var ListFav = React.createClass({
   },
   updateReRender:function(d){
   var temp = this.state.Newsdata;
-  alert(d);
   for(var i=0;i<temp.length;i++){
     if(temp[i].url==d.url){
       temp[i].comment=d.comment;
+      this.setState({Newsdata:temp});
       break;
     }
   }
-  this.setState({Newsdata:temp})
+
 },
   render:function(){
     var News;
@@ -62,8 +61,7 @@ var ListFav = React.createClass({
       var tempData  = this.deletemovie;
       var tempUpdate = this.updateReRender;
       News = this.state.Newsdata.map(function(news) {
-        return (<FavouriteDisplay  newsObj={news} updateRender={tempUpdate} del={tempData}></FavouriteDisplay>
-        );
+        return (<FavouriteDisplay  newsObj={news} updateRender={tempUpdate} del={tempData}></FavouriteDisplay>);
       });
     }
     return(
