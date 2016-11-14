@@ -29,36 +29,36 @@ var HomeComponent = React.createClass({
   render: function() {
     return (
       <div className="container-fluid">
-        <img src="../css/edit.png"></img>
-        <div className="container">
-        	<div className="row">
-        		<div className="col-sm-4">
-              <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/e.jpg" className="img-rounded"></img>
-              <br></br>
-              <button onClick={this.source.bind(null,'bbc-news')} type="button" className="btn btn-warning active btn-lg btn-block">
-				          BBC-NEWS
-			        </button>
-        		</div>
-        		<div className="col-sm-4">
-              <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/f.jpg" className="img-rounded"></img>
-              <br></br>
-              <button onClick={this.source.bind(null,'financial-times')} type="button" className="btn btn-warning active btn-lg btn-block">
-				          FINANCIAL TMES
-			        </button>
-        		</div>
-        		<div className="col-sm-4">
-              <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/g.png" className="img-rounded"></img>
-              <br></br>
-              <button onClick={this.source.bind(null,'espn')} type="button" className="btn btn-warning active btn-lg btn-block">
-				          ESPN-NEWS
-			        </button>
-        		</div>
-        	</div>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <DisplayNews newsObj={this.state.stateNews}/>
+      <img src="../css/edit.png"></img>
+      <div className="container">
+      <div className="row">
+      <div className="col-sm-4">
+      <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/e.jpg" className="img-rounded"></img>
+      <br></br>
+      <button onClick={this.source.bind(null,'bbc-news')} type="button" className="btn btn-warning active btn-lg btn-block">
+      BBC-NEWS
+      </button>
+      </div>
+      <div className="col-sm-4">
+      <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/f.jpg" className="img-rounded"></img>
+      <br></br>
+      <button onClick={this.source.bind(null,'financial-times')} type="button" className="btn btn-warning active btn-lg btn-block">
+      FINANCIAL TMES
+      </button>
+      </div>
+      <div className="col-sm-4">
+      <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}} src="../css/g.png" className="img-rounded"></img>
+      <br></br>
+      <button onClick={this.source.bind(null,'espn')} type="button" className="btn btn-warning active btn-lg btn-block">
+      ESPN-NEWS
+      </button>
+      </div>
+      </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <DisplayNews newsObj={this.state.stateNews}/>
       </div>
     )
   }

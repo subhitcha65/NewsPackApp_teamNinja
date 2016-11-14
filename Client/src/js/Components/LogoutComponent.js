@@ -8,9 +8,9 @@ var LogoutComponent = React.createClass({
       type: 'GET',
       success: function(data)
       {
-       if(data="logged out"){
+        if(data="logged out"){
           browserHistory.push('/');
-       }
+        }
       }.bind(this),
       error: function(err)
       {

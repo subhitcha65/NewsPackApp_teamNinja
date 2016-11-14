@@ -26372,36 +26372,36 @@ var HomeComponent = React.createClass({displayName: "HomeComponent",
   render: function() {
     return (
       React.createElement("div", {className: "container-fluid"}, 
-        React.createElement("img", {src: "../css/edit.png"}), 
-        React.createElement("div", {className: "container"}, 
-        	React.createElement("div", {className: "row"}, 
-        		React.createElement("div", {className: "col-sm-4"}, 
-              React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/e.jpg", className: "img-rounded"}), 
-              React.createElement("br", null), 
-              React.createElement("button", {onClick: this.source.bind(null,'bbc-news'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
-				          "BBC-NEWS"
-			        )
-        		), 
-        		React.createElement("div", {className: "col-sm-4"}, 
-              React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/f.jpg", className: "img-rounded"}), 
-              React.createElement("br", null), 
-              React.createElement("button", {onClick: this.source.bind(null,'financial-times'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
-				          "FINANCIAL TMES"
-			        )
-        		), 
-        		React.createElement("div", {className: "col-sm-4"}, 
-              React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/g.png", className: "img-rounded"}), 
-              React.createElement("br", null), 
-              React.createElement("button", {onClick: this.source.bind(null,'espn'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
-				          "ESPN-NEWS"
-			        )
-        		)
-        	)
-        ), 
-        React.createElement("br", null), 
-        React.createElement("br", null), 
-        React.createElement("br", null), 
-        React.createElement(DisplayNews, {newsObj: this.state.stateNews})
+      React.createElement("img", {src: "../css/edit.png"}), 
+      React.createElement("div", {className: "container"}, 
+      React.createElement("div", {className: "row"}, 
+      React.createElement("div", {className: "col-sm-4"}, 
+      React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/e.jpg", className: "img-rounded"}), 
+      React.createElement("br", null), 
+      React.createElement("button", {onClick: this.source.bind(null,'bbc-news'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
+      "BBC-NEWS"
+      )
+      ), 
+      React.createElement("div", {className: "col-sm-4"}, 
+      React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/f.jpg", className: "img-rounded"}), 
+      React.createElement("br", null), 
+      React.createElement("button", {onClick: this.source.bind(null,'financial-times'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
+      "FINANCIAL TMES"
+      )
+      ), 
+      React.createElement("div", {className: "col-sm-4"}, 
+      React.createElement("img", {style: {display: 'block', marginLeft: 'auto', marginRight: 'auto'}, src: "../css/g.png", className: "img-rounded"}), 
+      React.createElement("br", null), 
+      React.createElement("button", {onClick: this.source.bind(null,'espn'), type: "button", className: "btn btn-warning active btn-lg btn-block"}, 
+      "ESPN-NEWS"
+      )
+      )
+      )
+      ), 
+      React.createElement("br", null), 
+      React.createElement("br", null), 
+      React.createElement("br", null), 
+      React.createElement(DisplayNews, {newsObj: this.state.stateNews})
       )
     )
   }
@@ -26487,44 +26487,44 @@ module.exports = ListFav;
 var React = require('react');
 var {browserHistory}= require ('react-router');
 var LoginComponent = React.createClass({displayName: "LoginComponent",
-checkUser:function(){
-  var userObj={"username":this.refs.userName.value,"password":this.refs.passWord.value};
-  $.ajax({
-    url:'http://localhost:8080/login',
-    type: 'POST',
-    data:userObj,
-    dataType:"JSON",
-    success: function(data)
-    {
-      console.log("Ajax login success");
-      browserHistory.push('/');
-    }.bind(this),
-    error: function(err)
-    {
-      alert("User Unauthorised");
-      console.log(err);
-    }.bind(this)
-  });
-},
-render : function () {
-  return(
-    React.createElement("div", {className: "container"}, 
-        React.createElement("h1", {className: "form-signin-heading"}, "Please LOGIN"), 
-        React.createElement("div", {className: "input-group input-group-lg"}, 
-            React.createElement("span", {className: "input-group-addon"}, "Username"), 
-            React.createElement("input", {type: "text", ref: "userName", className: "form-control"})
-        ), 
-        React.createElement("br", null), 
-        React.createElement("div", {className: "input-group input-group-lg"}, 
-            React.createElement("span", {className: "input-group-addon"}, "Password"), 
-            React.createElement("input", {type: "password", ref: "passWord", className: "form-control"})
-        ), 
-        React.createElement("br", null), 
-        React.createElement("button", {onClick: this.checkUser, className: "btn btn-lg btn-primary btn-block"}, "LOGIN"), 
-        React.createElement("br", null)
+  checkUser:function(){
+    var userObj={"username":this.refs.userName.value,"password":this.refs.passWord.value};
+    $.ajax({
+      url:'http://localhost:8080/login',
+      type: 'POST',
+      data:userObj,
+      dataType:"JSON",
+      success: function(data)
+      {
+        console.log("Ajax login success");
+        browserHistory.push('/');
+      }.bind(this),
+      error: function(err)
+      {
+        alert("User Unauthorised");
+        console.log(err);
+      }.bind(this)
+    });
+  },
+  render : function () {
+    return(
+      React.createElement("div", {className: "container"}, 
+      React.createElement("h1", {className: "form-signin-heading"}, "Please LOGIN"), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "Username"), 
+      React.createElement("input", {type: "text", ref: "userName", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "Password"), 
+      React.createElement("input", {type: "password", ref: "passWord", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("button", {onClick: this.checkUser, className: "btn btn-lg btn-primary btn-block"}, "LOGIN"), 
+      React.createElement("br", null)
+      )
     )
-  )
-}
+  }
 });
 
 module.exports = LoginComponent;
@@ -26539,9 +26539,9 @@ var LogoutComponent = React.createClass({displayName: "LogoutComponent",
       type: 'GET',
       success: function(data)
       {
-       if(data="logged out"){
+        if(data="logged out"){
           browserHistory.push('/');
-       }
+        }
       }.bind(this),
       error: function(err)
       {
@@ -26616,10 +26616,9 @@ var NewsDisplayBox=React.createClass({displayName: "NewsDisplayBox",
       url:'http://localhost:8080/news/add',
       type: 'POST',
       data:newsToStore,
-
       success: function(data)
       {
-       alert(data);
+        alert(data);
       }.bind(this),
       error: function(err)
       {
@@ -26655,25 +26654,25 @@ var NewsDisplayBox=React.createClass({displayName: "NewsDisplayBox",
       React.createElement("h3", null, this.props.newsObj.title)
       ), 
       React.createElement("div", {className: "form-group form-group-sm"}, 
-    React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Desciprion:"), 
-    React.createElement("div", {className: "col-sm-10"}, 
-    React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.description, disabled: true}), React.createElement("p", null)
-    )
-    ), 
-    React.createElement("div", {className: "form-group form-group-sm"}, 
-  React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Published:"), 
-  React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Desciprion:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
+      React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.description, disabled: true}), React.createElement("p", null)
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-2 control-label", htmlFor: "formGroupInputLarge"}, "Published:"), 
+      React.createElement("div", {className: "col-sm-10"}, 
       React.createElement("input", {className: "form-control", id: "disabledInput", type: "text", placeholder: this.props.newsObj.publishedAt, disabled: true}), React.createElement("p", null)
-  )
-  ), 
-  React.createElement("div", {className: "form-group form-group-sm"}, 
-React.createElement("label", {className: "col-sm-1 control-label", htmlFor: "formGroupInputLarge"}), 
-React.createElement("div", {className: "col-sm-11"}, 
-  React.createElement("a", {id: "modal-195236", href: '#'+titleID, role: "button", className: "btn", "data-toggle": "modal"}, 
-  React.createElement("button", {className: "btn btn-primary btn-sm"}, "ADD ", React.createElement("span", {className: "glyphicon glyphicon-check"}))), "  ", 
+      )
+      ), 
+      React.createElement("div", {className: "form-group form-group-sm"}, 
+      React.createElement("label", {className: "col-sm-1 control-label", htmlFor: "formGroupInputLarge"}), 
+      React.createElement("div", {className: "col-sm-11"}, 
+      React.createElement("a", {id: "modal-195236", href: '#'+titleID, role: "button", className: "btn", "data-toggle": "modal"}, 
+      React.createElement("button", {className: "btn btn-primary btn-sm"}, "ADD ", React.createElement("span", {className: "glyphicon glyphicon-check"}))), "  ", 
       React.createElement("a", {href: this.props.newsObj.url}, React.createElement("button", {className: "btn btn-success btn-sm"}, "Check full News", React.createElement("span", {className: "glyphicon glyphicon-eye-open"})))
-)
-)
+      )
+      )
       )
       ), 
       React.createElement("div", {className: "row"}, 
@@ -26683,48 +26682,48 @@ React.createElement("div", {className: "col-sm-11"},
       ), 
       "//Modal Window to save category and commnets.", 
       React.createElement("div", {className: "modal fade", id: titleID, role: "dialog", "aria-labelledby": "myModalLabel", "aria-hidden": "true"}, 
-				React.createElement("div", {className: "modal-dialog"}, 
-					React.createElement("div", {className: "modal-content"}, 
-						React.createElement("div", {className: "modal-header"}, 
+      React.createElement("div", {className: "modal-dialog"}, 
+      React.createElement("div", {className: "modal-content"}, 
+      React.createElement("div", {className: "modal-header"}, 
 
-							React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-hidden": "true"}, 
-								"×"
-							), 
-							React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, 
-								"Modal title"
-							)
-						), 
-            React.createElement("div", {className: "modal-body"}, 
-							React.createElement("p", null, 
-								React.createElement("small", {className: "text-muted"}, "Mention your Category------")
-							), 
-							React.createElement("hr", null), 
-							React.createElement("form", {className: "form-horizontal", action: "index.html", method: "post"}, 
-								React.createElement("div", {className: "form-group"}, 
-									React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputName"}, "Category"), 
-									React.createElement("div", {className: "col-lg-10"}, 
-										React.createElement("input", {type: "text", ref: "category", className: "form-control", placeholder: "Category"})
-									)
-								), 
-								React.createElement("div", {className: "form-group"}, 
-									React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputEmail"}, "Comments"), 
-									React.createElement("div", {className: "col-lg-10"}, 
-										React.createElement("input", {type: "text", ref: "comment", className: "form-control", placeholder: "Comments"})
-									)
-								)
-							)
-						), 
-						React.createElement("div", {className: "modal-footer"}, 
-							React.createElement("button", {type: "button", className: "btn btn-default", "data-dismiss": "modal"}, 
-								"Close"
-							), 
-							React.createElement("button", {onClick: this.addMovies, type: "button", className: "btn btn-success"}, 
-								"Save changes"
-							)
-						)
-					)
-				)
-			)
+      React.createElement("button", {type: "button", className: "close", "data-dismiss": "modal", "aria-hidden": "true"}, 
+      "×"
+      ), 
+      React.createElement("h4", {className: "modal-title", id: "myModalLabel"}, 
+      "Modal title"
+      )
+      ), 
+      React.createElement("div", {className: "modal-body"}, 
+      React.createElement("p", null, 
+      React.createElement("small", {className: "text-muted"}, "Mention your Category------")
+      ), 
+      React.createElement("hr", null), 
+      React.createElement("form", {className: "form-horizontal", action: "index.html", method: "post"}, 
+      React.createElement("div", {className: "form-group"}, 
+      React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputName"}, "Category"), 
+      React.createElement("div", {className: "col-lg-10"}, 
+      React.createElement("input", {type: "text", ref: "category", className: "form-control", placeholder: "Category"})
+      )
+      ), 
+      React.createElement("div", {className: "form-group"}, 
+      React.createElement("label", {className: "col-lg-2 control-label", htmlFor: "inputEmail"}, "Comments"), 
+      React.createElement("div", {className: "col-lg-10"}, 
+      React.createElement("input", {type: "text", ref: "comment", className: "form-control", placeholder: "Comments"})
+      )
+      )
+      )
+      ), 
+      React.createElement("div", {className: "modal-footer"}, 
+      React.createElement("button", {type: "button", className: "btn btn-default", "data-dismiss": "modal"}, 
+      "Close"
+      ), 
+      React.createElement("button", {onClick: this.addMovies, type: "button", className: "btn btn-success"}, 
+      "Save changes"
+      )
+      )
+      )
+      )
+      )
       )
     );
   }
@@ -26733,7 +26732,6 @@ React.createElement("div", {className: "col-sm-11"},
 module.exports=NewsDisplayBox;
 },{"react":232}],244:[function(require,module,exports){
 var React=require('react');
-
 var SearchComponent=React.createClass({displayName: "SearchComponent",
   getInitialState:function(){
     return({
@@ -26798,89 +26796,70 @@ module.exports=SearchComponent;
 var React = require('react');
 var {browserHistory} = require('react-router');
 var Signup = React.createClass({displayName: "Signup",
-
-    signUpFunction : function(){
-                var firstname = this.refs.fname.value;
-                var lastname= this.refs.lname.value;
-                var email = this.refs.email.value;
-                var username = this.refs.userName.value;
-                var password = this.refs.pass.value+"";
-                var confirmpass = this.refs.confirmPass.value;
-                if (password==confirmpass)
-                {
-                var signupForm = {
-                    'firstName':this.refs.fname.value,
-                    'lastName':this.refs.lname.value,
-                    'email':this.refs.email.value,
-                    'username': this.refs.userName.value,
-                    'password': this.refs.pass.value,
-                                        }
-                //object1 = JSON.stringify(object1);
-                console.log(signupForm);
-                $.ajax({
-                    url:'http://localhost:8080/user/signup',
-                    type: 'POST',
-                    data: signupForm,
-                    success: function(data)
-                    {
-                        alert(data);
-                        browserHistory.push('/');
-                    }.bind(this),
-                    error: function(err)
-                    {
-                        console.log(err);
-                    }.bind(this)
-                    });
-                }
-                else
-                {
-                        alert("password and confirm password have to be same !!");
-                }
-
-},
-
- render:function(){
-   return (
-
-       React.createElement("div", {className: "container"}, 
-           React.createElement("h1", {className: "form-signin-heading"}, "Please SIGN UP"), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, "First Name"), 
-               React.createElement("input", {type: "text", ref: "fname", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, "Last Name "), 
-               React.createElement("input", {type: "text", ref: "lname", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, " Email ID"), 
-               React.createElement("input", {type: "email", ref: "email", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, "User Name"), 
-               React.createElement("input", {type: "text", ref: "userName", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, "  Password  "), 
-               React.createElement("input", {type: "password", ref: "pass", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("div", {className: "input-group input-group-lg"}, 
-               React.createElement("span", {className: "input-group-addon"}, "Confirm Password"), 
-               React.createElement("input", {type: "password", ref: "confirmPass", className: "form-control"})
-           ), 
-           React.createElement("br", null), 
-           React.createElement("button", {onClick: this.signUpFunction, className: "btn btn-lg btn-primary btn-block"}, "SIGN UP"), 
-           React.createElement("br", null)
-       )
-
-)}
-});
-module.exports=Signup;
+  signUpFunction : function(){
+    if (this.refs.pass.value==this.refs.confirmPass.value)
+    {
+      var signupForm = {firstName:this.refs.fname.value,lastName:this.refs.lname.value,email:this.refs.email.value,username:this.refs.userName.value,password: this.refs.pass.value}
+      //console.log(signupForm);
+      $.ajax({
+        url:'http://localhost:8080/user/signup',
+        type: 'POST',
+        data: signupForm,
+        success: function(data)
+        {
+          alert(data);
+          browserHistory.push('/');
+        }.bind(this),
+        error: function(err)
+        {
+          console.log(err);
+        }.bind(this)
+      });
+    }
+    else{
+      alert("password and confirm password have to be same !!");
+    }
+  },
+  render:function(){
+    return (
+      React.createElement("div", {className: "container"}, 
+      React.createElement("h1", {className: "form-signin-heading"}, "Please SIGN UP"), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "First Name"), 
+      React.createElement("input", {type: "text", ref: "fname", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "Last Name "), 
+      React.createElement("input", {type: "text", ref: "lname", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, " Email ID"), 
+      React.createElement("input", {type: "email", ref: "email", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "User Name"), 
+      React.createElement("input", {type: "text", ref: "userName", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "  Password  "), 
+      React.createElement("input", {type: "password", ref: "pass", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("div", {className: "input-group input-group-lg"}, 
+      React.createElement("span", {className: "input-group-addon"}, "Confirm Password"), 
+      React.createElement("input", {type: "password", ref: "confirmPass", className: "form-control"})
+      ), 
+      React.createElement("br", null), 
+      React.createElement("button", {onClick: this.signUpFunction, className: "btn btn-lg btn-primary btn-block"}, "SIGN UP"), 
+      React.createElement("br", null)
+      )
+    )}
+  });
+  module.exports=Signup;
 },{"react":232,"react-router":81}],246:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');

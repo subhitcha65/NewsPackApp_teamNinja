@@ -20,7 +20,7 @@ router.route("/signup").post(function(req, res, next) {
     Obj = new User(Obj);/*filter the content according to Schema*/
     User.findOne({username:Obj.username},function(err,data){
       if(err)
-        res.send("Some Error Occured!");/*database error*/
+      res.send("Some Error Occured!");/*database error*/
       else {
         if(data){
           res.send("Sorry! Another User has already taken this Username. Please continue taking diffrent Username");/*response for user*/
@@ -60,12 +60,12 @@ router.route("/signup").post(function(req, res, next) {
 router.route("/categories").get(isLoggedIn,function(req,res,next){
   var obj ={username:req.user.username};
   User.findOne(obj,{category:1,_id:0},function(err,data){
-      if(err){
-        res.send(err);
-      }
-      else {
-        res.send(data);
-      }
+    if(err){
+      res.send(err);
+    }
+    else {
+      res.send(data);
+    }
   });
 });
 

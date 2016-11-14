@@ -1,5 +1,4 @@
 var React=require('react');
-
 var SearchComponent=React.createClass({
   getInitialState:function(){
     return({

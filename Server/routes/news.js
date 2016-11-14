@@ -15,71 +15,71 @@ function isLoggedIn(req,res,next){
 /*add news to the database */
 router.route("/add").post(isLoggedIn,function(req, res, next) {
   var Obj = req.body;/*body will contain news object from newsapi added on more field category*/
-    Obj.username=req.user.username;/*adding userid for news schema*/
-    if(!Obj.category){
-      Obj.category = "Others";
+  Obj.username=req.user.username;/*adding userid for news schema*/
+  if(!Obj.category){
+    Obj.category = "Others";
+  }
+  if(!Obj.comment){
+    Obj.comment = "";
+  }
+  User.findOne({username:req.user.username,category:{$in:[Obj.category]}},function(err,data){
+    if(err){
+      res.send("Some Error Occured!");/*database error*/
     }
-    if(!Obj.comment){
-      Obj.comment = "";
-    }
-    User.findOne({username:req.user.username,category:{$in:[Obj.category]}},function(err,data){
-      if(err){
-        res.send("Some Error Occured!");/*database error*/
+    else{
+      if(data){
+        /*category already exist*/
+        News.findOne({url:Obj.url,username:req.user.username},function(err,data){
+          if(err){
+            res.send(err);
+          }
+          else if(data){
+            res.send("News already exist");
+          }
+          else{
+            Obj = new News(Obj);
+            Obj.save(function(err){
+              if(err){
+                res.send(err);
+              }
+              else{
+                res.send("News Added Successfully");
+              }
+            });
+          }
+        });
       }
       else{
-        if(data){
-          /*category already exist*/
-          News.findOne({url:Obj.url,username:req.user.username},function(err,data){
-            if(err){
-              res.send(err);
-            }
-            else if(data){
-              res.send("News already exist");
-            }
-            else{
-              Obj = new News(Obj);
-              Obj.save(function(err){
-                if(err){
-                  res.send(err);
-                }
-                else{
-                  res.send("News Added Successfully");
-                }
-              });
-            }
-          });
-        }
-        else{
-          User.update({username:req.user.username},{$push:{category:Obj.category}},function(error,dataU){
-            if(error){
-              res.send(error);
-            }
-            else{
-              /*category added successfully*/
-              News.findOne({url:Obj.url,username:req.user.username},function(err,data){
-                if(err){
-                  res.send(err);
-                }
-                else if(data){
-                  res.send("News already exist");
-                }
-                else{
-                  Obj = new News(Obj);
-                  Obj.save(function(err){
-                    if(err){
-                      res.send(err);
-                    }
-                    else{
-                      res.send("News Added Successfully");
-                    }
-                  });
-                }
-              });
-            }
-          });
-        }
+        User.update({username:req.user.username},{$push:{category:Obj.category}},function(error,dataU){
+          if(error){
+            res.send(error);
+          }
+          else{
+            /*category added successfully*/
+            News.findOne({url:Obj.url,username:req.user.username},function(err,data){
+              if(err){
+                res.send(err);
+              }
+              else if(data){
+                res.send("News already exist");
+              }
+              else{
+                Obj = new News(Obj);
+                Obj.save(function(err){
+                  if(err){
+                    res.send(err);
+                  }
+                  else{
+                    res.send("News Added Successfully");
+                  }
+                });
+              }
+            });
+          }
+        });
       }
-    });
+    }
+  });
 });
 
 /*fetch news from database according to category and key*/
@@ -88,11 +88,11 @@ router.route("/get").post(isLoggedIn,function(req,res,next){
   var obj = {username:req.user.username};
   var key = req.body.key;
   if(req.body.category){
-  obj.category = req.body.category;
+    obj.category = req.body.category;
   }
   News.find(obj,{_id:0},function(err,data){
-  if(data){
-    if(key){
+    if(data){
+      if(key){
         data = data.map(function(d){
           if(d.description){
             if(d.description.search(new RegExp(key,'i'))>-1)
